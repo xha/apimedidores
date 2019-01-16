@@ -151,7 +151,7 @@ namespace ApiPedidos.Controllers
 
                         var dt = Data.ActasFotos(idFolio, idU, exten);
 
-                        string name = dt.Rows[0]["idFoto"].ToString();
+                        string name = dt.Rows[0]["idActa"].ToString();
 
                         json = new Response
                         {
@@ -245,7 +245,7 @@ namespace ApiPedidos.Controllers
 
                         var dt = Data.IncidenciasFotos(idFolio, idU, exten, observacion);
 
-                        string name = dt.Rows[0]["idFoto"].ToString();
+                        string name = dt.Rows[0]["idFolioInc"].ToString();
 
                         json = new Response
                         {
