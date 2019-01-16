@@ -58,7 +58,7 @@ namespace ApiPedidos.Controllers
 
         [Route("api/ApiLogin/Registro")]
         [HttpPost]
-        public IHttpActionResult Registro([FromUri] StandardUri info,[FromBody] UsuarioModel data)
+        public IHttpActionResult Registro([FromUri] StandardUri info, [FromBody] UsuarioModel data)
         {
             var json = new Response();
             var ModeloReg = new UsuarioModel();

@@ -46,6 +46,87 @@ namespace ApiPedidos.Controllers
             return json;
         }
 
+        [Route("api/ApiBase/fotosListar")]
+        [HttpGet]
+        public IHttpActionResult fotosListar(int idFolio, [FromUri] StandardUri data)
+        {
+            var json = new Response();
+            data = data ?? new StandardUri();
+            try
+            {
+                var Combos = ComboData.fotosListar(idFolio);
+
+                json = new Response
+                {
+                    Success = true,
+                    Json = Combos
+                };
+
+            }
+            catch (Exception ex)
+            {
+                var msg = (ex.InnerException != null ? ex.InnerException.Message : ex.Message).Replace(System.Environment.NewLine, "");
+
+                json = new Response { Success = false, Id = 0, Mensaje = msg };
+            }
+
+            return Ok(json);
+        }
+
+        [Route("api/ApiBase/actasListar")]
+        [HttpGet]
+        public IHttpActionResult actasListar(int idFolio, [FromUri] StandardUri data)
+        {
+            var json = new Response();
+            data = data ?? new StandardUri();
+            try
+            {
+                var Combos = ComboData.actasListar(idFolio);
+
+                json = new Response
+                {
+                    Success = true,
+                    Json = Combos
+                };
+
+            }
+            catch (Exception ex)
+            {
+                var msg = (ex.InnerException != null ? ex.InnerException.Message : ex.Message).Replace(System.Environment.NewLine, "");
+
+                json = new Response { Success = false, Id = 0, Mensaje = msg };
+            }
+
+            return Ok(json);
+        }
+
+        [Route("api/ApiBase/incidenciasListar")]
+        [HttpGet]
+        public IHttpActionResult incidenciasListar(int idFolio, [FromUri] StandardUri data)
+        {
+            var json = new Response();
+            data = data ?? new StandardUri();
+            try
+            {
+                var Combos = ComboData.incidenciasListar(idFolio);
+
+                json = new Response
+                {
+                    Success = true,
+                    Json = Combos
+                };
+
+            }
+            catch (Exception ex)
+            {
+                var msg = (ex.InnerException != null ? ex.InnerException.Message : ex.Message).Replace(System.Environment.NewLine, "");
+
+                json = new Response { Success = false, Id = 0, Mensaje = msg };
+            }
+
+            return Ok(json);
+        }
+
         //-----------Combos
         [Route("api/ApiBase/Zonas")]
         [HttpGet]
@@ -55,7 +136,7 @@ namespace ApiPedidos.Controllers
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.ComboZonas(data.idU);
+                var Combos = ComboData.Combozonas();
 
                 json = new Response
                 {
@@ -76,7 +157,7 @@ namespace ApiPedidos.Controllers
 
         [Route("api/ApiBase/foliosCapturados")]
         [HttpGet]
-        public IHttpActionResult foliosCapturados( [FromUri] StandardUri data)
+        public IHttpActionResult Estados([FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
@@ -103,7 +184,7 @@ namespace ApiPedidos.Controllers
 
         [Route("api/ApiBase/PendientesConsulta")]
         [HttpGet]
-        public IHttpActionResult PendientesConsulta([FromUri] StandardUri data)
+        public IHttpActionResult Ciudades([FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
@@ -155,15 +236,15 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/ApiBase/Unidades")]
+        [Route("api/ApiBase/Actividadtuberias")]
         [HttpGet]
-        public IHttpActionResult Unidades(int id, [FromUri] StandardUri data)
+        public IHttpActionResult Unidades([FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.ComboUnidades(id, data.idU, data.lang);
+                var Combos = ComboData.Actividadtuberias();
 
                 json = new Response
                 {
@@ -182,15 +263,43 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/ApiBase/Categorias")]
+        [Route("api/ApiBase/Actividadmarcas")]
         [HttpGet]
-        public IHttpActionResult Categorias([FromUri] StandardUri data)
+        public IHttpActionResult Categorias()
         {
             var json = new Response();
-            data = data ?? new StandardUri();
+
             try
             {
-                var Combos = ComboData.ComboCategorias(data.idU, data.lang);
+                var Combos = ComboData.Actividadmarcas();
+
+                json = new Response
+                {
+                    Success = true,
+                    Json = Combos
+                };
+
+            }
+            catch (Exception ex)
+            {
+                var msg = (ex.InnerException != null ? ex.InnerException.Message : ex.Message).Replace(System.Environment.NewLine, "");
+
+                json = new Response { Success = false, Id = 0, Mensaje = msg };
+            }
+
+            return Ok(json);
+        }
+
+
+        [Route("api/ApiBase/Actividadtraslados")]
+        [HttpGet]
+        public IHttpActionResult Actividadtraslados()
+        {
+            var json = new Response();
+
+            try
+            {
+                var Combos = ComboData.Actividadtraslados();
 
                 json = new Response
                 {
@@ -210,4 +319,3 @@ namespace ApiPedidos.Controllers
         }
 
     }
-}
