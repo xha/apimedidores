@@ -13,14 +13,11 @@ namespace ApiPedidos
     {
         protected void Application_Start()
         {
-            // Web API routes
-            GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }
 }

@@ -46,15 +46,15 @@ namespace ApiPedidos.Controllers
             return json;
         }
 
-        [Route("api/ApiBase/fotosListar")]
+        [Route("api/ApiBase/FotosListar")]
         [HttpGet]
-        public IHttpActionResult fotosListar(int idFolio, [FromUri] StandardUri data)
+        public IHttpActionResult FotosListar(int idFolio, [FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.fotosListar(idFolio);
+                var Combos = ComboData.FotosListar(idFolio);
 
                 json = new Response
                 {
@@ -73,15 +73,15 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/ApiBase/actasListar")]
+        [Route("api/ApiBase/ActasListar")]
         [HttpGet]
-        public IHttpActionResult actasListar(int idFolio, [FromUri] StandardUri data)
+        public IHttpActionResult ActasListar(int idFolio, [FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.actasListar(idFolio);
+                var Combos = ComboData.ActasListar(idFolio);
 
                 json = new Response
                 {
@@ -100,15 +100,15 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/ApiBase/incidenciasListar")]
+        [Route("api/ApiBase/IncidenciasListar")]
         [HttpGet]
-        public IHttpActionResult incidenciasListar(int idFolio, [FromUri] StandardUri data)
+        public IHttpActionResult IncidenciasListar(int idFolio, [FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.incidenciasListar(idFolio);
+                var Combos = ComboData.IncidenciasListar(idFolio);
 
                 json = new Response
                 {
@@ -163,7 +163,7 @@ namespace ApiPedidos.Controllers
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.foliosCapturados(data.idU);
+                var Combos = ComboData.FoliosCapturados(data.idU);
 
                 json = new Response
                 {
@@ -209,15 +209,15 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/ApiBase/folioBuscar")]
+        [Route("api/ApiBase/FolioBuscar")]
         [HttpGet]
-        public IHttpActionResult folioBuscar(string folioOficial, string claveZona, [FromUri] StandardUri data)
+        public IHttpActionResult FolioBuscar(string folioOficial, string claveZona, [FromUri] StandardUri data)
         {
             var json = new Response();
             data = data ?? new StandardUri();
             try
             {
-                var Combos = ComboData.folioBuscar(folioOficial, data.idU, claveZona);
+                var Combos = ComboData.FolioBuscar(folioOficial, data.idU, claveZona);
 
                 json = new Response
                 {

@@ -29,13 +29,13 @@ namespace Datos.Models
         public Login Login { get; set; }
         public Perfiles Perfil { get; set; }
         public Empresa Empresa { get; set; }
-
+        
         public void Asignar(DataTable Data)
         {
             var item = Data.Rows[0];
             Id = (int)item["idUsuario"];
             Usuario = (string)item["nombreUsu"];
-
+           
         }
     }
 

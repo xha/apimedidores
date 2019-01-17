@@ -12,7 +12,7 @@ namespace Datos.Data
     public class CombosData
     {
 
-        public IList<Combo> folioBuscar(string folioOficial, int idUsuario, string claveZona)
+        public IList<Combo> FolioBuscar(string folioOficial, int idUsuario, string claveZona)
         {
             SqlCommand _comando = Configuracion.CrearComando("st_ap03_folioBuscar");
             _comando.Parameters.AddWithValue("@folioOficial", folioOficial);
@@ -22,21 +22,21 @@ namespace Datos.Data
             return Configuracion.GetList(_comando);
         }
 
-        public DataTable fotosListar(int idFolio)
+        public DataTable FotosListar(int idFolio)
         {
             SqlCommand _comando = Configuracion.CrearComando("sp_ap04_folioFoto_lista");
             _comando.Parameters.AddWithValue("@idFolio", idFolio);
             return Configuracion.EjecutarComando(_comando);
         }
 
-        public DataTable actasListar(int idFolio)
+        public DataTable ActasListar(int idFolio)
         {
             SqlCommand _comando = Configuracion.CrearComando("sp_ap04_folioActa_lista");
             _comando.Parameters.AddWithValue("@idFolio", idFolio);
             return Configuracion.EjecutarComando(_comando);
         }
 
-        public DataTable incidenciasListar(int idFolio)
+        public DataTable IncidenciasListar(int idFolio)
         {
             SqlCommand _comando = Configuracion.CrearComando("sp_ap04_folioIncidencia_lista");
             _comando.Parameters.AddWithValue("@idFolio", idFolio);
@@ -84,7 +84,7 @@ namespace Datos.Data
             return Configuracion.EjecutarComando(_comando);
         }
 
-        public IList<Combo> foliosCapturados(int idUsuario)
+        public IList<Combo> FoliosCapturados(int idUsuario)
         {
             SqlCommand _comando = Configuracion.CrearComando("st_ap02_foliosCapturadosCuenta");
             _comando.Parameters.AddWithValue("@idUsuario", idUsuario);

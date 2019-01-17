@@ -11,12 +11,10 @@ namespace Datos.Models
     {
         public ApiCategoriaModel()
         {
-            IdFolio = 0;
             Descripcion = "";
         }
 
         public int IdCategoria { get; set; }
-        public int IdFolio { get; set; }
         public string Descripcion { get; set; }
         public bool Habilitado { get; set; }
 
@@ -24,7 +22,6 @@ namespace Datos.Models
         {
             var item = Data.Rows[0];
             IdCategoria = (int)item["Id"];
-            IdFolio = (int)item["idFolio"];
             Descripcion = (string)item["Descripcion"];
             Habilitado = (bool)item["Habilitado"];
         }
@@ -37,7 +34,6 @@ namespace Datos.Models
                 json.Add(new ApiCategoriaModel
                 {
                     IdCategoria = (int)item["Id"],
-                    IdFolio = (int)item["idFolio"],
                     Descripcion = (string)item["Descripcion"],
                     Habilitado = (bool)item["Habilitado"],
                 });

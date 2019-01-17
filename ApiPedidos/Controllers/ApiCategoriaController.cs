@@ -298,6 +298,62 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
+        [Route("api/ApiFolio/GuardaIncidencia")]
+        [HttpPost]
+        public IHttpActionResult GuardaIncidencia()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            int idFolio = Convert.ToInt32(httpRequest.Form["idFolio"]);
+            int idU = Convert.ToInt32(httpRequest.Form["idU"]);
+            string observacion = httpRequest.Form["observacion"].ToString();
+            var json = new Response();
+            try
+            {
+
+
+                if (idU == 0)
+                {
+                    json = new Response
+                    {
+                        Success = false,
+                        Mensaje = "No esta autoriado a utilizar este Recurso"
+                    };
+                    return Ok(json);
+                }
+
+                var dt = Data.IncidenciasFotos(idFolio, idU, "", observacion);
+
+                if (dt.Columns.Contains("codigo"))
+                {
+                    json = new Response
+                    {
+                        Success = false,
+                        Mensaje = dt.Rows[0]["Mensaje"].ToString()
+                    };
+
+                }
+                else
+                {
+
+
+                    json = new Response
+                    {
+                        Success = true,
+                        Json = "Registro actualizado correctamente"
+                    };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var msg = (ex.InnerException != null ? ex.InnerException.Message : ex.Message).Replace(System.Environment.NewLine, "");
+
+                json = new Response { Success = false, Id = 0, Mensaje = msg };
+            }
+
+            return Ok(json);
+        }
+
         [Route("api/ApiBase/CostoDelFolio")]
         [HttpGet]
         public IHttpActionResult CostoDelFolio(int idFolio, [FromUri] StandardUri data)
@@ -408,9 +464,9 @@ namespace ApiPedidos.Controllers
             return Ok(json);
         }
 
-        [Route("api/agregarActividadbuscar/Get")]
+        [Route("api/AgregarActividadbuscar/Get")]
         [HttpGet]
-        public IHttpActionResult agregarActividadbuscar()
+        public IHttpActionResult AgregarActividadbuscar()
         {
             var httpRequest = HttpContext.Current.Request;
             string descripcion = "";
@@ -472,9 +528,9 @@ namespace ApiPedidos.Controllers
         }
 
 
-        [Route("api/agregarActividadguardar/Post")]
+        [Route("api/AgregarActividadguardar/Post")]
         [HttpPost]
-        public IHttpActionResult agregarActividadguardar()
+        public IHttpActionResult AgregarActividadguardar()
         {
             var httpRequest = HttpContext.Current.Request;
             int idFolio = Convert.ToInt32(httpRequest.Form["idFolio"]);
